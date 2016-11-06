@@ -6,26 +6,27 @@
   <c:forEach items="${comments}" var="comment" varStatus="status">
    <c:choose>
     <c:when test="${depth==null||depth==0}">
-     <li class="comment ${status.index%2==0?'even_comment':'odd_comment'}" id="comment-${comment.id}">
+     <li class="comment byuser comment-author-mjmode even thread-even depth-1" id="comment-${comment.id}">
+      <span class="comt-f">#${status.index+1 }</span>
     </c:when>
     <c:otherwise>
-      <li class="comment ${depth%2==(parent?0:1)?'even_comment':'odd_comment'}" id="comment-${comment.id}">
+      <li class="comment byuser comment-author-mjmode even thread-even  children-reply'}" style="margin-left: 46px;" id="comment-${comment.id}">
     </c:otherwise>
    </c:choose>
-   <div class="comment-meta">
-     <img class="avatar" width="35" height="35" src="../../resource/img/avatar.png" />
-     <ul class="comment-name-date">
-       <li class="comment-name"><a class="url" target="_blank" href="${comment.url}">${comment.creator}</a></li>
-       <li class="comment-date"><fmt:formatDate value="${comment.createTime}" pattern="yyyy/MM/dd hh:mma"/></li>
-      </ul>
-      <c:if test="${comment.status=='approve'}"><div class="comment-reply"><a href='#respond'>回复</a></div></c:if>
-     </div>
-     <div class="comment-content">
-       <c:if test="${comment.status=='wait'}">
-        <span class="comment-note">你的评论正在等待审核。。。</span>
-      </c:if>
-       <p>${comment.content}</p>
-     </div>
+   <div class="comt-avatar"><img src="${g.domain}/resource/img/avatar.png" class="avatar avatar-36 photo" height="36" width="36"></div>
+   <div class="comt-main" id="div-comment-12165">${comment.content}
+	    <div class="comt-meta">
+	    	<span class="comt-author">${comment.creator}</span><fmt:formatDate value="${comment.createTime}" pattern="yyyy/MM/dd hh:mma"/>
+	    	<a rel="nofollow" class="comment-reply-login" href="${comment.url}">
+	    	</a>
+	    	<c:if test="${comment.status=='approve'}">
+	    	<!-- 
+	    	<a class="signin-loader comment-reply-link" href="javascript:;"><i class="fa fa-reply"></i> 登录后回复</a>
+	    	-->
+	    	</c:if>
+	    </div>
+   </div>
+   
      <c:if test="${comment.children!=null&&fn:length(comment.children)!=0}">
        <c:set var="depth" value="${depth+1}" scope="request" />
        <c:set var="parent" value="${status.index%2==0}" scope="request" />

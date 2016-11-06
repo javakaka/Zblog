@@ -17,10 +17,8 @@
 </style>
 </head>
 <body vlink="#333333" link="#333333">
-  <h2 style="text-align: center; margin-top: 20px">${g.title} - blog.zhouhaocheng.cn's SiteMap </h2>
-  <center></center>
   <div id="nav">
-     <a href="${g.domain}"><strong>${g.title} - blog.zhouhaocheng.cn</strong></a>  &raquo; 
+     <a href="${g.domain}"><strong>${g.title} </strong></a>  &raquo; 
      <a href="${g.domain}/sitemap.html">站点地图</a>
   </div>
   <div class="content">
@@ -32,6 +30,6 @@
     </ul>
   </div>
   <div class="content"></div>
-  <div id="footer">查看博客首页: <strong><a href="${g.domain}">${g.title} - blog.zhouhaocheng.cn</a></strong></div><br>
+  <div id="footer">查看博客首页: <strong><a href="${g.domain}">${g.title} </a></strong></div><br>
 </body>
 </html>

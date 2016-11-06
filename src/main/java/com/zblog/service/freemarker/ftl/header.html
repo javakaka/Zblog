@@ -1,47 +1,59 @@
-<div id="header">
-  <div id="menu" class="clearfix">
-    <ul>
-      <li><a href="${domain}/index.html">首页</a>
-        <ul>
-          <li><a href="${domain}/backend/login">登录</a></li>
-        </ul>
-      </li>
-<#--       <li><a href="${domain}/categorys/Java">Java</a>
-        <ul class="sub-menu">
-          <li><a href="${domain}/categorys/JavaSE">JavaSE</a></li>
-          <li><a href="${domain}/categorys/JavaEE">JavaEE</a></li>
-          <li><a href="${domain}/categorys/JavaFX">JavaFX</a></li>
-        </ul>
-      </li>
-      <li><a href="${domain}/categorys/DataBase">DataBase</a></li> -->
-      
+<header class="header"  role="banner">
+  <div class="container">
+    <hgroup itemscope itemtype="http://schema.org/WPHeader">
+    	<h1 class="logo"><a href="${domain}/"  title="首页">首页</a></h1>
+	</hgroup> 
+    <nav  id="main-nav" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+    <ul class="site-nav site-navbar">
+   	 <li id="menu-item-17546" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17546"><a href="${domain}/"  title="首页">首页</a></li>
+   	 
       <#list categorys as category>
-        <li><a href="${domain}/categorys/${category.name}">${category.name}</a>
         <#if (category.nodes?exists && category.nodes?size>0) >
-         <ul class="sub-menu">
-          <#list category.nodes as subcategory >
-             <li><a href="${domain}/categorys/${subcategory.name}">${subcategory.name}</a></li>
-          </#list>
-          </ul>
+   		 <li id="menu-item-17547" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-17549"><a href="${domain}/categorys/${category.name}" >${category.name}</a>
+        <ul class="sub-menu">
+			<#list category.nodes as subcategory >
+			<li id="menu-item-17553" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-17553"><a href="${domain}/categorys/${subcategory.name}" >${subcategory.name}</a></li>
+         	</#list>
+		</ul>
+		<#else>
+		<li id="menu-item-17547" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-17547"><a href="${domain}/categorys/${category.name}" >${category.name}</a>
         </#if>
+        
         </li>
       </#list>
-      
-      <#list pages as page>
-        <li><a href="${domain}/pages/${page.id}">${page.title}</a>
-        <#if (page.children?exists && page.children?size>0) >
-         <ul class="sub-menu">
-          <#list page.children as child >
-             <li><a href="${domain}/pages/${child.id}">${child.title}</a></li>
-          </#list>
-          </ul>
-        </#if>
-        </li>
-      </#list>
-      <li><a href="${domain}/sitemap">文章归档</a></li>
-    </ul>
+      <li class="navto-search"><a href="javascript:;" class="search-show active"><i class="fa fa-search"></i></a></li>
+      </ul>
+	</nav>
+      <div class="topbar">
+      <ul class="site-nav topmenu">
+      	<li id="menu-item-17595" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17595"><a target="_blank" href="online-tools.htm" >在线工具</a></li>
+		<li id="menu-item-17596" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17596"><a target="_blank" href="" >MY love</a></li>
+		<li id="menu-item-17597" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17597"><a target="_blank" href="index-1.htm" >关于我</a></li>
+		<li id="menu-item-17600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17600"><a href="j'" >和我联系</a></li>
+		<li id="menu-item-17598" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17598"><a href="" >逍遥音乐电台</a></li>
+		<li id="menu-item-17599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17599"><a href="" >广告合作</a></li>
+		<li id="menu-item-17601" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-17601"><a href="" >个人作品</a></li>
+		<li id="menu-item-17602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17602"><a href="" >留言板</a></li>
+      </ul>
+		<a href="javascript:;" class="signin-loader">Hi, 请登录</a>&nbsp;/&nbsp;<a href="javascript:;" class="signup-loader">我要注册</a>
+      </div>
+    <i class="fa fa-bars m-icon-nav"></i>
+    <i class="fa fa-search m-icon-nav m-nav-search"></i> 
+        <i class="fa fa-user m-icon-nav signin-loader"></i> 
+      </div>
+</header>
+<div class="site-search">
+  <div class="container">
+  <form method="get" class="site-search-form" action="${domain}/"  target="_blank">
+	<input type="hidden" name="s" value="12120512578091288362">
+      <input class="search-input" name="q" id="q" type="text" placeholder="百度站内搜索，百度一下【推荐】">
+      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  <!-- 
+    -->
+    <form method="get" class="site-search-form" action="${domain}/" >
+      <input class="search-input" name="word" type="text" autocomplete="off" placeholder="搜索一下">
+      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+    </form>
   </div>
-  <h1 id="logo"><a href="${domain}/">${title} - zhouhaocheng.cn</a></h1>
-  <h2 id="tagline">${subtitle}</h2>
-  <a id="menu_button" href="#"><i id="icon_menu"></i></a>
 </div>

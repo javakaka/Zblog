@@ -1,6 +1,15 @@
 $(function(){
   var mail = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
       url = /^https?:\/\/[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+?\/?$/,
+      siteName = "zblog",
+   getSiteName = function(){
+	if( typeof siteName == "undefined" || siteName == ""){
+		return "";
+	}
+	else{
+		return "/"+siteName;
+	}
+  },
    getCookie = function(name){
     var cookieValue = null;
     if(document.cookie && document.cookie != ''){
@@ -83,7 +92,7 @@ $(function(){
       data[item.name]=item.value;
     });
     
-    $.post("/comments",data,function(msg){
+    $.post( getSiteName() + "/comments",data,function(msg){
       if(msg&&msg.success){
         $("textarea").val("");
         window.location.reload();

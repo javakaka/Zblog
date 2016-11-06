@@ -27,6 +27,8 @@ public class Post extends BaseEntity{
   private int ccount = 0;
   /* 阅读数 */
   private int rcount = 0;
+  /* 关键字 */
+  private String keywords ;
 
   public String getTitle(){
     return title;
@@ -107,5 +109,13 @@ public class Post extends BaseEntity{
   public void setRcount(int rcount){
     this.rcount = rcount;
   }
+
+	public String getKeywords() {
+		return keywords;
+	}
+	
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
 
 }

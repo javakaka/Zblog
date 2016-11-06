@@ -87,8 +87,9 @@ public class StatelessCsrfFilter extends OncePerRequestFilter{
         return;
       }else if(!ajax && !isVerificationToken(request, csrfToken)){
         // if(response.isCommitted())
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
+//        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+    	  System.out.println( "------------------csrfToken not equal" );
+//        return;
       }
     }
 

@@ -42,6 +42,11 @@ zblog.post.insert=function(){
 	  $("#title").focus();
 	  return ;
   }
+  var keywords = $.trim($("#keywords").val());
+  if(keywords==""){
+	  $("#keywords").focus();
+	  return ;
+  }
   
   var _getText=function(){
     var result;
@@ -63,6 +68,7 @@ zblog.post.insert=function(){
 
   var postid=$("#postid").val();
   var data={title : title,
+		keywords : keywords,
         content : _getText(),
         tags : $("#tags").val(),
         categoryid : $("#category").val(),

@@ -24,6 +24,7 @@ import com.zblog.core.feed.ArticleAdapter;
 import com.zblog.core.feed.Channel;
 import com.zblog.core.feed.Channel.Article;
 import com.zblog.core.feed.RssFeedWriter;
+import com.zblog.core.plugin.PageModel;
 import com.zblog.core.util.ServletUtils;
 import com.zblog.core.util.StringUtils;
 import com.zblog.service.OptionsService;
@@ -40,8 +41,12 @@ public class IndexController{
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String index(@RequestParam(value = "page", defaultValue = "1") int page, String word, Model model){
+	  String ss="test";
+	  System.out.println("ss:"+ss);
     if(!StringUtils.isBlank(word)){
       word = word.trim();
+      PageModel<PostVO> list =postManager.search(word, page);
+      System.out.println("list:"+list.getTotalCount());
       model.addAttribute("page", postManager.search(word, page));
       model.addAttribute("search", word);
       model.addAttribute(WebConstants.PRE_TITLE_KEY, word);

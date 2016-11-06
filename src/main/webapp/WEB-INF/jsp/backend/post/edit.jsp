@@ -29,6 +29,7 @@
             <div class="panel-body">
               <input type="hidden" id="postid" value="${post.id}" />
               <input type="text" id="title" class="form-control input-md" placeholder="输入标题" value="${post.title}"><br/>
+              <input type="text" id="keywords" class="form-control input-md" placeholder="输入关键字" value="${post.keywords}"><br/>
               <ul class="nav nav-tabs nav-justified" id="editor-nav">
                 <li class="active"><a href="#editor-mk">Markdown</a></li>
                 <li><a href="#editor-txt">纯文本</a></li>

@@ -1,8 +1,13 @@
-<div class="side_widget clearfix">
-  <h3 class="headline">近期文章</h3>
+<div class="widget widget_ui_posts">
+  <h3 class="widget_tit">最新文章</h3>
   <ul>
     <#list posts as post>
-      <li><a href="${domain}/posts/${post.id}">${post.title}</a></li>
+      <li>
+	      <a href="${domain}/posts/${post.id}" >
+		      <span class="thumbnail"><img data-src="1477389724-3415-6ea20db20ffec5d6735dce4222ce.jpg-imageView2-1-w-75-h-58-q-90.jpg"  class="thumb" alt="${post.title}" /></span><span class="text">${post.title}</span>
+		      <span class="muted"> <time>${post.createTime?string("yyyy-MM-dd")}</time></span><span class="muted"></span>
+	      </a>
+      </li>
     </#list>
   </ul>
 </div>

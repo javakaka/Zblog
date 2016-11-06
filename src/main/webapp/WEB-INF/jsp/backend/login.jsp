@@ -13,7 +13,7 @@
        <img title="Zblog" src="../../resource/img/logo.png" />
        <p><a href="${g.domain}" title="不知道自己在哪">← 回到${g.title}</a></p>
      </div>
-     <form id="loginform" method="post">
+     <form id="loginform" method="post" >
        <input type="hidden" name="CSRFToken" value="${CSRFToken}" />
        <div class="form-group">
          <div class="input-group">
@@ -25,6 +25,12 @@
          <div class="input-group">
            <div class="input-group-addon"><i class="icon-key"></i></div>
            <input type="password" autocomplete="off" class="form-control" name="password" placeholder="密码" />
+         </div>
+       </div>
+       <div class="form-group">
+         <div class="input-group">
+           <div class="input-group-addon"><i class="icon-key"></i></div>
+           <input type="password" autocomplete="off" class="form-control" name="guard" placeholder="独立密码" />
          </div>
        </div>
      <!--   <div class="form-group">
@@ -40,7 +46,7 @@
   </div>
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">Power By <a href="https://github.com/dongfangshangren/Zblog" target="_blank">Zblog</a></p>
+      <p class="text-muted">Power By Zblog</p>
     </div>
   </footer>
  </body>

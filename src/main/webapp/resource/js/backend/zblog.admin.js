@@ -17,9 +17,14 @@ zblog.register =function(){
 }
 
 zblog.getDomainLink=function(path){
-  return window.location.protocol+"//"+window.location.host+"/backend/"+path;
+  return window.location.protocol+"//"+window.location.host+"/"+zblog.getContextPath()+"/backend/"+path;
 }
 
+zblog.getContextPath =function(){
+	var localObj = window.location;
+	var contextPath = localObj.pathname.split("/")[1];
+	return contextPath;
+}
 zblog.newCsrf=function(){
   var csrfValue = (Math.random()+"").substring(2);
   /* 此处token值可以放在cookie中 */

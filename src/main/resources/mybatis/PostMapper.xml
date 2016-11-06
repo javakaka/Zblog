@@ -63,12 +63,12 @@
    </select>
    
    <insert id="insert" parameterType="Post">
-      insert into post(id,title,excerpt,content,type,parent,categoryid,pstatus,cstatus,ccount,rcount,createTime,creator,lastUpdate) 
-         values(#{id},#{title},#{excerpt},#{content, jdbcType=CLOB},#{type},#{parent},#{categoryid},#{pstatus},#{cstatus},#{ccount},#{rcount},#{createTime},#{creator},#{lastUpdate})
+      insert into post(id,title,excerpt,content,type,parent,categoryid,pstatus,cstatus,ccount,rcount,keywords,createTime,creator,lastUpdate) 
+         values(#{id},#{title},#{excerpt},#{content, jdbcType=CLOB},#{type},#{parent},#{categoryid},#{pstatus},#{cstatus},#{ccount},#{rcount},#{keywords},#{createTime},#{creator},#{lastUpdate})
    </insert>
    
    <update id="update" parameterType="Post">
-     update post set title=#{title},excerpt=#{excerpt}, content=#{content, jdbcType=CLOB},parent=#{parent}, pstatus=#{pstatus},
+     update post set title=#{title},excerpt=#{excerpt}, content=#{content, jdbcType=CLOB},parent=#{parent}, pstatus=#{pstatus},keywords=#{keywords},
          <if test="categoryid!=null and categoryid!=''">
            categoryid=#{categoryid},
          </if>

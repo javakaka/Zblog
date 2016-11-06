@@ -22,10 +22,12 @@
        <h3 class="headline">About</h3>
        <ul id="social_link">
          <li class="rss_button"><a target="_blank" href="${g.domain}/feed"></a></li>
-         <li class="github_button"><a target="_blank" href="https://github.com/dongfangshangren"></a></li>
+         <!-- 
+        <li class="github_button"><a target="_blank" href="https://github.com/"></a></li>
+        -->
        </ul>
-       <p>You can show your site introduction by using Site Introduction Widget. 
-       You also can show Social Icon on upper part, and search form at bottom. </p>
+       <p>个人博客，记录工作与学习经历 
+       开发技术、技术资讯、网络资源 </p>
         <div id="search_area" class="clearfix">
           <form method="get" action="${g.domain}">
              <div class="search_input">

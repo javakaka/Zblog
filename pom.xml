@@ -126,12 +126,19 @@
       <version>4.7.2</version>
     </dependency>
     <!-- 注意IKAnalyzer没有maven坐标,请自行添加到本地仓库 -->
+    
     <dependency>
       <groupId>IKAnalyzer</groupId>
       <artifactId>IKAnalyzer</artifactId>
       <version>2012FF_u1</version>
     </dependency>
-
+    
+   <!--  <dependency>
+		<groupId>org.wltea.ik-analyzer</groupId>
+		<artifactId>ik-analyzer</artifactId>
+		<version>3.2.8</version>
+	</dependency>
+-->
     <!-- mybatis -->
     <dependency>
       <groupId>org.mybatis</groupId>

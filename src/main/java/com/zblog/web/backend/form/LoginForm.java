@@ -3,7 +3,7 @@ package com.zblog.web.backend.form;
 public class LoginForm{
   private String username;
   private String password;
-  private boolean remeber;
+  private String remeber;
   /* 防止后台暴力破解的字段 */
   private String guard;
   private String redirectURL;
@@ -25,10 +25,13 @@ public class LoginForm{
   }
 
   public boolean isRemeber(){
-    return remeber;
+	  if (remeber != null && remeber.equals( "true" ) ) {
+		  return true;
+	}
+    return false;
   }
 
-  public void setRemeber(boolean remeber){
+  public void setRemeber(String remeber){
     this.remeber = remeber;
   }
 
