@@ -9,7 +9,6 @@
                       http://www.springframework.org/schema/context/spring-context-4.1.xsd
                       http://www.springframework.org/schema/mvc 
                       http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
- 
   <mvc:annotation-driven enable-matrix-variables="false">
 	<mvc:message-converters register-defaults="true">
 	  <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
@@ -28,6 +27,7 @@
     <mvc:async-support default-timeout="300000" />
   </mvc:annotation-driven>
   
+  <context:property-placeholder location="classpath*:/server.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
   <context:component-scan base-package="com.zblog.web.front.controller" />
   <context:component-scan base-package="com.zblog.web.backend.controller" />
   

@@ -47,6 +47,7 @@ zblog.post.insert=function(){
 	  $("#keywords").focus();
 	  return ;
   }
+  var picture = $.trim($("#picture").val());
   
   var _getText=function(){
     var result;
@@ -69,6 +70,7 @@ zblog.post.insert=function(){
   var postid=$("#postid").val();
   var data={title : title,
 		keywords : keywords,
+		picture : picture,
         content : _getText(),
         tags : $("#tags").val(),
         categoryid : $("#category").val(),

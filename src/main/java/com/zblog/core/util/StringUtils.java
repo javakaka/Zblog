@@ -4,6 +4,8 @@ import java.util.Collection;
 
 public final class StringUtils{
 
+	private static String _$1 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz";
+	
   private StringUtils(){
   }
 
@@ -51,6 +53,36 @@ public final class StringUtils{
 
   public static String emptyDefault(String ifEmpty, String defaults){
     return isBlank(ifEmpty) ? defaults : ifEmpty;
+  }
+  
+  public static String getRandKeys(int paramInt)
+  {
+    String str = "";
+    int i = _$1.length();
+    int j = 1;
+    do
+    {
+      str = "";
+      int k = 0;
+      for (int m = 0; m < paramInt; m++)
+      {
+        double d = Math.random() * i;
+        int n = (int)Math.floor(d);
+        int i1;
+        if (((
+          i1 = _$1.charAt(n)) >= 
+          '0') && (i1 <= 57))
+        {
+          k++;
+        }
+        str = str + _$1.charAt(n);
+      }
+      if (k >= 2)
+        j = 0;
+    }
+    while (j != 0);
+
+    return str;
   }
 
 }

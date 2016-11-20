@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.zblog.core.Constants;
+import com.zblog.core.util.MailUtil;
 import com.zblog.service.vo.MailVO;
 import com.zblog.web.backend.form.MailOption;
 
@@ -42,18 +43,28 @@ public class MailSenderService{
   public void sendMail(MailVO mail){
     if(!init)
       return;
-
-    MimeMessage message = sender.createMimeMessage();
-    try{
-      MimeMessageHelper helper = new MimeMessageHelper(message, true, Constants.ENCODING_UTF_8.name());
-      helper.setFrom(mail.getFrom());
-      helper.setTo(mail.getTo().toArray(new String[]{}));
-      helper.setSubject(mail.getSubject());
-      helper.setText(mail.getContent(), true);
-      sender.send(message);
-    }catch(MessagingException e){
-      logger.error("send mail error", e);
-    }
+    MailUtil.sendMail(sender.getHost(), sender.getPort(), mail.getFrom(), sender.getPassword(), mail.getSubject(), mail.getContent(), mail.getTo().get(0));
+//    MimeMessage message = sender.createMimeMessage();
+//    try{
+//      MimeMessageHelper helper = new MimeMessageHelper(message, true, Constants.ENCODING_UTF_8.name());
+//      helper.setFrom(mail.getFrom());
+//      helper.setTo(mail.getTo().toArray(new String[]{}));
+//      helper.setSubject(mail.getSubject());
+//      helper.setText(mail.getContent(), true);
+//      sender.send(message);
+//    }catch(MessagingException e){
+//      logger.error("send mail error", e);
+//    }
   }
+
+	public boolean isInit() {
+		return init;
+	}
+	
+	public void setInit(boolean init) {
+		this.init = init;
+	}
+  
+
 
 }

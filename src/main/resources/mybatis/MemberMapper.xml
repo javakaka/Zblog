@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.MemberMapper">
+   
+   <select id="loadById" parameterType="java.lang.String" resultType="Member">  
+      select id, username, nickname, email, password, remark,createTime, lastUpdate from blog_member where id = #{id}
+   </select>
+   
+   <select id="loadByNameAndPass" resultType="Member">  
+      select id, username, nickname, email, password, remark,createTime, lastUpdate from blog_member where username = #{username} and password=#{password} 
+   </select>
+   
+   <select id="loadByEmail" resultType="Member">  
+      select id, username, nickname, email, password, remark,createTime, lastUpdate from blog_member where email = #{email} 
+   </select>
+   
+   <select id="loadByUserName" resultType="Member">  
+      select id, username, nickname, email, password, remark,createTime, lastUpdate from blog_member where username = #{username} 
+   </select>
+   
+   <select id="list" parameterType="PageModel" resultType="Member">  
+      select id, username, nickname, email, password, remark,createTime, lastUpdate from blog_member
+   </select>
+   
+   <select id="count" resultType="long">
+     select count(*) from blog_member
+   </select>
+   
+   <insert id="insert" parameterType="Member">
+      insert into blog_member(id, username, nickname, email, password, remark,createTime, lastUpdate) 
+         values(#{id},#{username},#{nickname},#{email},md5(#{password}),#{remark},#{createTime},#{lastUpdate})
+   </insert>
+   
+   <update id="update" parameterType="Member">
+     update blog_member set nickname=#{nickname},email=#{email},remark=#{remark}
+     <if test="password!=null and password!=''">
+       ,password=md5(#{password})
+     </if>
+     where id=#{id}
+   </update>
+
+   <delete id="deleteById">
+	 delete from blog_member where id = #{id}
+  </delete>
+	
+</mapper>

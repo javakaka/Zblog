@@ -1,17 +1,21 @@
 package com.zblog.web.backend.controller;
 
+import java.util.ArrayList;
+
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zblog.biz.OptionManager;
 import com.zblog.core.plugin.MapContainer;
 import com.zblog.core.util.CollectionUtils;
 import com.zblog.service.CategoryService;
 import com.zblog.service.email.MailSenderService;
+import com.zblog.service.vo.MailVO;
 import com.zblog.web.backend.form.GeneralOption;
 import com.zblog.web.backend.form.MailOption;
 import com.zblog.web.backend.form.PostOption;
@@ -77,6 +81,30 @@ public class OptionsController{
   public String mail(Model model){
     model.addAttribute("form", optionManager.getMailOption());
     return "backend/options/email";
+  }
+  
+  @RequestMapping(value = "/send-email", method = RequestMethod.GET)
+  @ResponseBody
+  public String sendMail(){
+	  MailVO mail =new MailVO();
+	  mail.setFrom("service@tao-fast.com");
+	  ArrayList<String> to =new ArrayList<String>();
+	  to.add("510836102@qq.com");
+	  mail.setTo(to);
+	  mail.setSubject("test");
+	  mail.setContent("test test email");
+	  if (! mailSenderService.isInit()) {
+		  MailOption mailOpt =optionManager.getMailOption();
+		  if ( mailOpt == null ) {
+			return "mail server not config";
+		  }
+		  else
+		  {
+			  mailSenderService.setServerInfo(mailOpt);
+		  }
+	  }
+	  mailSenderService.sendMail(mail);
+	  return "success";
   }
 
   @RequestMapping(value = "/email", method = RequestMethod.POST)

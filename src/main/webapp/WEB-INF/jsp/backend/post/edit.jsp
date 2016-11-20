@@ -30,6 +30,9 @@
               <input type="hidden" id="postid" value="${post.id}" />
               <input type="text" id="title" class="form-control input-md" placeholder="输入标题" value="${post.title}"><br/>
               <input type="text" id="keywords" class="form-control input-md" placeholder="输入关键字" value="${post.keywords}"><br/>
+              <input type="hidden" id="picture" name="picture" value=""/>
+              <img id="image" alt="" src="${g.domain }/${post.picture }" width="200px" height="150px"/>
+              <input type="file"onchange="selectImage(this);"/><input type="button"onclick="uploadImage();"value="提交"/><br/>
               <ul class="nav nav-tabs nav-justified" id="editor-nav">
                 <li class="active"><a href="#editor-mk">Markdown</a></li>
                 <li><a href="#editor-txt">纯文本</a></li>
@@ -99,5 +102,58 @@
     </div>
   </div>
   <script type="text/javascript" src="${g.domain}/resource/js/backend/admin.post.js"></script>
+  <script type="text/javascript">
+  var image = '';
+  function selectImage(file)
+  {
+  	if(!file.files || !file.files[0]){
+ 		return;
+ 		}
+ 	 var reader = new FileReader();
+ 	 reader.onload = function(evt){
+ 	 document.getElementById('image').src = evt.target.result;
+ 	 image = evt.target.result;
+ 		}
+ 	reader.readAsDataURL(file.files[0]);
+ }
+  function uploadImage(){
+
+ $.ajax({
+
+ type:'POST',
+
+  url: '${g.domain}/backend/uploads/js-upload', 
+
+  data: {image: image},
+
+  async: false,
+
+  dataType: 'json',
+
+  success: function(data){
+
+ if(data.code == 0 ){
+
+ alert('上传成功');
+ $("#picture").val(data.path);
+
+ }else{
+
+ alert('上传失败');
+
+ }
+
+ },
+
+  error: function(err){
+
+ alert('网络故障');
+
+ }
+
+ });
+
+ }
+  </script>
  </body>
 </html>

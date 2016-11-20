@@ -12,6 +12,7 @@ import com.zblog.biz.PostManager;
 import com.zblog.core.WebConstants;
 import com.zblog.core.dal.entity.Category;
 import com.zblog.service.CategoryService;
+import com.zblog.service.TagService;
 
 @Controller
 @RequestMapping("/categorys")
@@ -20,6 +21,8 @@ public class CategoryController{
   private PostManager postManager;
   @Autowired
   private CategoryService categoryService;
+  @Autowired
+  private TagService tagService;
 
   @RequestMapping(value = "/{categoryName}", method = RequestMethod.GET)
   public String post(@PathVariable("categoryName") String categoryName,
@@ -30,6 +33,7 @@ public class CategoryController{
     }
 
     model.addAttribute("category", categoryName);
+    model.addAttribute("tag_list", tagService.list());
     model.addAttribute(WebConstants.PRE_TITLE_KEY, categoryName);
     return "index";
   }

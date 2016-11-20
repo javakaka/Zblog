@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.MemberCollectionMapper">
+   
+   <select id="loadById" parameterType="java.lang.String" resultType="MemberCollection">  
+      select id, member_id, post_id, createTime, lastUpdate from blog_member_collection where id = #{id}
+   </select>
+   
+   <select id="listByMemberId" resultType="MemberCollection">  
+       select id, member_id, post_id, createTime, lastUpdate from blog_member_collection where member_id = #{memberId} 
+   </select>
+   
+   <select id="list" parameterType="PageModel" resultType="MemberCollection">  
+      select id, member_id, post_id, createTime, lastUpdate from blog_member_collection
+   </select>
+   
+   <select id="count" resultType="long">
+     select count(*) from blog_member_collection
+   </select>
+   
+   <insert id="insert" parameterType="MemberCollection">
+      insert into blog_member_collection(id,member_id,post_id,createTime,lastUpdate) 
+         values(#{id},#{memberId},#{postId}#{createTime},#{lastUpdate})
+   </insert>
+   
+   <update id="update" parameterType="MemberCollection">
+     update blog_member_collection set lastUpdate=#{lastUpdate}
+     where id=#{id}
+   </update>
+
+   <delete id="deleteById">
+	 delete from blog_member_collection where id = #{id}
+  </delete>
+	
+</mapper>

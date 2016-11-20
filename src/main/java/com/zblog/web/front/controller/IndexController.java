@@ -28,6 +28,7 @@ import com.zblog.core.plugin.PageModel;
 import com.zblog.core.util.ServletUtils;
 import com.zblog.core.util.StringUtils;
 import com.zblog.service.OptionsService;
+import com.zblog.service.TagService;
 import com.zblog.service.vo.PostVO;
 
 @Controller
@@ -38,6 +39,8 @@ public class IndexController{
   private StaticTemplate staticTemplate;
   @Autowired
   private OptionsService optionsService;
+  @Autowired
+  private TagService tagService;
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String index(@RequestParam(value = "page", defaultValue = "1") int page, String word, Model model){
@@ -53,6 +56,7 @@ public class IndexController{
     }else{
       model.addAttribute("page", postManager.listPost(page, 10));
     }
+    model.addAttribute("tag_list", tagService.list());
 
     return "index";
   }
